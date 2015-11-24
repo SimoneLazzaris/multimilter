@@ -1,4 +1,4 @@
 [Project]
-Name=tcp_thserver
+Name=multimilter
 Manager=KDevCMakeManager
 VersionControl=kdevgit
