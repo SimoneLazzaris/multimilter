@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
-project(tcp_thserver)
+project(multimilter)
 
-add_executable(tcp_thserver main.cpp thpool.cpp)
-set_property(TARGET tcp_thserver PROPERTY CXX_STANDARD 11)
-target_link_libraries(tcp_thserver pthread)
-install(TARGETS tcp_thserver RUNTIME DESTINATION bin)
+add_executable(multimilter main.cpp thpool.cpp milter_packet.cpp miltertalk.cpp)
+set_property(TARGET multimilter PROPERTY CXX_STANDARD 11)
+target_link_libraries(multimilter pthread)
+install(TARGETS multimilter RUNTIME DESTINATION bin)

@@ -53,7 +53,7 @@ void stupid_msg(int fd) {
 	close(fd);
 }
 
-
+extern void milter_talk(int fd);
 
 void mainloop(int sockfd, thpool *pool) {
 	struct sockaddr_in cli_addr;
@@ -61,6 +61,7 @@ void mainloop(int sockfd, thpool *pool) {
 
 	for (;;) {
 		int newfd=accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
+		dbg("CONNESSIONE");
 		if (newfd>0)
 			pool->push_connection(newfd);
 		else {
@@ -74,7 +75,8 @@ void mainloop(int sockfd, thpool *pool) {
 int main(int argc, char **argv) {
 	int s=init_listening_socket(8991);
 	if (s<0) return -1;
-	thpool p(stupid_msg);
+	//thpool p(stupid_msg);
+	thpool p(milter_talk);
 	p.startThread();
 	p.startThread();
 	mainloop(s,&p);
